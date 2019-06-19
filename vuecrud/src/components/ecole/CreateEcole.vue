@@ -24,7 +24,7 @@
 <script>
 export default {
   components: {
-      name: 'AddItem'
+      name: 'AddEcole'
   },
   data() {
       return {
@@ -35,7 +35,7 @@ export default {
       addItem() {
            let uri = 'http://localhost:8080/api/ecoles/create/'; 
             this.axios.post(uri, this.item).then((response) => {
-                console.log(response.data)
+                this.$router.push({name: 'IndexEcole'});
             });
         }
     }

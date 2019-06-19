@@ -3,6 +3,7 @@
 <template>
     <div>
         <h1>Liste des écoles</h1>
+        <p><router-link :to="{name: 'CreateEcole'}" class="btn btn-primary">Create</router-link></p>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -16,7 +17,7 @@
                 <tr v-for="item in items" :key="item.idEcole">
                     <td>{{ item.idEcole }}</td>
                     <td>{{ item.nomEcole }}</td>
-                    <td><router-link :to="{name: 'Edit', params: { id: item.idEcole }}" class="btn btn-primary">Edit</router-link></td>
+                    <td><router-link :to="{name: 'EditEcole', params: { id: item.idEcole }}" class="btn btn-primary">Edit</router-link></td>
                     <td><button class="btn btn-danger"  v-on:click="deleteItem(item.idEcole)">Delete</button></td>
                 </tr>
             </tbody>
@@ -52,7 +53,7 @@
             {
               let uri = 'http://localhost:8080/api/ecoles/delete/'+id;              
               this.axios.post(uri);
-              this.items.splice(id, 1);
+              this.$router.go();
             },
             getJson()
             {

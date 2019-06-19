@@ -45,7 +45,7 @@ export default{
             {
               let uri = 'http://localhost:8080/api/ecoles/update/' + this.$route.params.id;
                 this.axios.post(uri, this.item).then((response) => {
-                  this.$router.push({name: 'Index'});
+                  this.$router.push({name: 'IndexEcole'});
                 });
             }
         }

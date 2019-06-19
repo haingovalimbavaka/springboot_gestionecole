@@ -11,6 +11,8 @@ public class GestiondesetudiantsApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("Voilà un nouveau Build");
 	}
+	
 
 }
