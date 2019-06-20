@@ -5,8 +5,13 @@ package org.mino.project.etudiant;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.persistence.NoResultException;
 
 import org.mino.project.ecole.Ecole;
+import org.mino.project.note.Note;
+import org.mino.project.note.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -48,4 +53,5 @@ public class EtudiantService {
     public void deleteEtudiant(Etudiant etudiant) {
     	etudiantRepository.delete(etudiant);
     }
+
 }

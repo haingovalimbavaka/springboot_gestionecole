@@ -8,6 +8,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.mino.project.Helper.ServiceHelper;
+import org.mino.project.classe.Classe;
 import org.mino.project.ecole.Ecole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -73,5 +75,14 @@ public class EtudiantAPI {
         }
         etudiantService.deleteEtudiantById(id);
         return "Delete OK";
+    }
+    
+    @GetMapping("/moyenneEtudiant/{id}")
+    public ResponseEntity<Double> calculMoyenne(@PathVariable Long id) {
+        Optional<Etudiant> etudiant = etudiantService.getEtudiant(id);
+        if (!etudiant.isPresent()) {
+            ResponseEntity.badRequest().build();
+        }
+        return new ResponseEntity<>( ServiceHelper.getInstance().calculMoyenneEtudiant(etudiant.get()), HttpStatus.OK);
     }
 }

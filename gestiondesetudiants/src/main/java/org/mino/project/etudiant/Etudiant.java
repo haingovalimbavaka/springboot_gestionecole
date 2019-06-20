@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.mino.project.Helper.ServiceHelper;
 import org.mino.project.classe.Classe;
 import org.mino.project.ecole.Ecole;
 import org.mino.project.note.Note;
@@ -26,6 +27,7 @@ public class Etudiant {
 	private String nomEtudiant;
 	private String prenomEtudiant;
 	private Date dateNaissance;
+	private Double moyenneEtudiant;
 	
 	@ManyToOne
 	@JoinColumn(name="idClasse")
@@ -105,6 +107,18 @@ public class Etudiant {
 	 */
 	public void setListNote(List<Note> listNote) {
 		this.listNote = listNote;
+	}
+	/**
+	 * @return the moyenneEtudiant
+	 */
+	public Double getMoyenneEtudiant() {
+		return ServiceHelper.getInstance().calculMoyenneEtudiant(this);
+	}
+	/**
+	 * @param moyenneEtudiant the moyenneEtudiant to set
+	 */
+	public void setMoyenneEtudiant(Double moyenneEtudiant) {
+		this.moyenneEtudiant = moyenneEtudiant;
 	}
 	
 }

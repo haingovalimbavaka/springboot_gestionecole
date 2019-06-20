@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.mino.project.Helper.ServiceHelper;
 import org.mino.project.classe.Classe;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,6 +24,8 @@ public class Ecole {
 	@OneToMany(mappedBy="ecole", cascade=CascadeType.ALL, orphanRemoval=true)
 	@JsonIgnore
 	private List<Classe> listClasse;
+	
+	private Double moyenneEcole;
 	/**
 	 * @return the idEcole
 	 */
@@ -58,6 +61,18 @@ public class Ecole {
 	 */
 	public void setListClasse(List<Classe> listClasse) {
 		this.listClasse = listClasse;
+	}
+	/**
+	 * @return the moyenneEcole
+	 */
+	public Double getMoyenneEcole() {
+		return ServiceHelper.getInstance().calculMoyenneEcole(this);
+	}
+	/**
+	 * @param moyenneEcole the moyenneEcole to set
+	 */
+	public void setMoyenneEcole(Double moyenneEcole) {
+		this.moyenneEcole = moyenneEcole;
 	}
 
 }

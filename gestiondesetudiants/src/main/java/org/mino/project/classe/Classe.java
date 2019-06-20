@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.mino.project.Helper.ServiceHelper;
 import org.mino.project.ecole.Ecole;
 import org.mino.project.etudiant.Etudiant;
 
@@ -30,6 +31,9 @@ public class Classe {
 	@OneToMany(mappedBy="classe", cascade=CascadeType.ALL, orphanRemoval=true)
 	@JsonIgnore
 	private List<Etudiant> listEtudiant;
+	
+	private Double moyenneClasse;
+	
 	/**
 	 * @return the libelleClasse
 	 */
@@ -77,6 +81,18 @@ public class Classe {
 	 */
 	public void setListEtudiant(List<Etudiant> listEtudiant) {
 		this.listEtudiant = listEtudiant;
+	}
+	/**
+	 * @return the moyenneClasse
+	 */
+	public Double getMoyenneClasse() {
+		return ServiceHelper.getInstance().calculMoyenneDeClasse(this);
+	}
+	/**
+	 * @param moyenneClasse the moyenneClasse to set
+	 */
+	public void setMoyenneClasse(Double moyenneClasse) {
+		this.moyenneClasse = moyenneClasse;
 	}
 	
 }
