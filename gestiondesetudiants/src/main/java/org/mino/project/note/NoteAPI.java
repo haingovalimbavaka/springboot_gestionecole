@@ -55,7 +55,7 @@ public class NoteAPI {
         return new ResponseEntity<>(note.get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/update/{id}")
     public ResponseEntity<Note> update(@PathVariable Long id, @Valid @RequestBody Note note) {
         if (!noteService.getNote(id).isPresent()) {
@@ -64,7 +64,7 @@ public class NoteAPI {
         return ResponseEntity.ok(noteService.editNote(note));
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         if (!noteService.getNote(id).isPresent()) {

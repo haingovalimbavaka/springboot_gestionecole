@@ -21,7 +21,7 @@ public class Ecole {
 	private Long idEcole; 
 	private String nomEcole;
 	
-	@OneToMany(mappedBy="ecole", cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy="ecole", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH}, orphanRemoval=true)
 	@JsonIgnore
 	private List<Classe> listClasse;
 	
@@ -60,7 +60,8 @@ public class Ecole {
 	 * @param listClasse the listClasse to set
 	 */
 	public void setListClasse(List<Classe> listClasse) {
-		this.listClasse = listClasse;
+		this.getListClasse().clear();
+		this.getListClasse().addAll(listClasse);
 	}
 	/**
 	 * @return the moyenneEcole

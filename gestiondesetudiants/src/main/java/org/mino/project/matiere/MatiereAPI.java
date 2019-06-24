@@ -55,7 +55,7 @@ public class MatiereAPI {
         return new ResponseEntity<>(matiere.get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/update/{id}")
     public ResponseEntity<Matiere> update(@PathVariable Long id, @Valid @RequestBody Matiere matiere) {
         if (!matiereService.getMatiere(id).isPresent()) {
@@ -64,7 +64,7 @@ public class MatiereAPI {
         return ResponseEntity.ok(matiereService.editMatiere(matiere));
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         if (!matiereService.getMatiere(id).isPresent()) {

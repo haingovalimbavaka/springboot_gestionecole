@@ -53,7 +53,7 @@ public class EcoleAPI {
         return new ResponseEntity<>(ecole.get(), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/update/{id}")
     public ResponseEntity<Ecole> update(@PathVariable Long id, @Valid @RequestBody Ecole ecole) {
         if (!ecoleService.getEcole(id).isPresent()) {
@@ -62,7 +62,7 @@ public class EcoleAPI {
         return ResponseEntity.ok(ecoleService.editEcole(ecole));
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         if (!ecoleService.getEcole(id).isPresent()) {
